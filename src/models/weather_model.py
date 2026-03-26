@@ -63,7 +63,7 @@ class CurrentWeather(BaseModel):
     location: Location
     data: WeatherDataPoint
 #5. Forecast type enum
-class ForcastType(str, Enum):
+class ForecastType(str, Enum):
     hourly = "hourly"
     daily = "daily"
 
@@ -72,7 +72,7 @@ class Forecast(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     location: Location
-    forecast_type: ForcastType
+    forecast_type: ForecastType
     data_points: List[WeatherDataPoint] = Field(..., min_length=1)
 
 
