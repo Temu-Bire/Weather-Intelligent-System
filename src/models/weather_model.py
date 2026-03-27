@@ -1,3 +1,5 @@
+from ast import dump
+
 from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional, List
 from datetime import datetime
@@ -104,3 +106,4 @@ class WeatherIntelligence(BaseModel):
     recommendation: Optional[str] = None   # e.g. "Good day for farming" or "Stay indoors"
     
     fetched_at: datetime = Field(default_factory=datetime.utcnow)
+

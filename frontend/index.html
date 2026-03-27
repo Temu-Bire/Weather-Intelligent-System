@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Intelligent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Weather Intelligent</h1>
+            <p>Smart Weather Analysis & Recommendations</p>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Enter city name (e.g. Addis Ababa)" value="Addis Ababa">
+            <button onclick="getWeather()">Get Weather</button>
+        </div>
+
+        <div id="loading" class="loading">Loading weather data...</div>
+
+        <div id="weatherContainer" class="weather-container hidden">
+            <!-- Current Weather -->
+            <div class="current-weather">
+                <h2 id="locationName"></h2>
+                <div class="temp" id="temperature"></div>
+                <div class="condition" id="condition"></div>
+                <div class="feels-like" id="feelsLike"></div>
+            </div>
+
+            <!-- Summary & Recommendation -->
+            <div class="intelligence">
+                <h3>💡 Smart Summary</h3>
+                <p id="summary"></p>
+                
+                <h3>📌 Recommendation</h3>
+                <p id="recommendation" class="recommendation"></p>
+            </div>
+
+            <!-- Alerts -->
+            <div id="alertsSection" class="alerts hidden">
+                <h3>⚠️ Alerts</h3>
+                <div id="alerts"></div>
+            </div>
+
+            <!-- Extra Details -->
+            <div class="details">
+                <div class="detail-item">
+                    <span>Humidity</span>
+                    <strong id="humidity"></strong>
+                </div>
+                <div class="detail-item">
+                    <span>Wind Speed</span>
+                    <strong id="windSpeed"></strong>
+                </div>
+                <div class="detail-item">
+                    <span>Visibility</span>
+                    <strong id="visibility"></strong>
+                </div>
+                <div class="detail-item">
+                    <span>UV Index</span>
+                    <strong id="uvIndex"></strong>
+                </div>
+            </div>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

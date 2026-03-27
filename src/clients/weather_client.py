@@ -6,7 +6,7 @@ from typing import Optional, Dict, Any
 from datetime import datetime
 import json
 
-from src.config import Settings
+from ..config import Settings
 
 from ..models.weather_model import (
     Location,
@@ -39,7 +39,7 @@ class WeatherClient:
         if self.session:
             await self.session.close()
 
-    async def _get(self, url: str, params: Dict[str, Any] = None) -> Dict:
+    async def _get(self, url: str, params: Dict[str, Any] ) -> Dict:
         """Helper method for GET requests"""
         if not self.session:
             self.session = aiohttp.ClientSession()
@@ -102,7 +102,7 @@ class WeatherClient:
 
     async def get_forecast(self, lat: float, lon: float, forecast_type: ForecastType = ForecastType.daily) -> Forecast:
         """Fetch hourly or daily forecast"""
-        endpoint = "forecast" if forecast_type == ForecastType.hourly else "forecast/daily"
+        endpoint = "forecast"
         url = f"{self.base_url}/{endpoint}"
         
         params = {

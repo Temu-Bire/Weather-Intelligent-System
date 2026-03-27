@@ -1,0 +1,18 @@
+# Core Web Framework
+aiohttp==3.10.10
+
+# Environment Variables
+python-dotenv==1.0.1
+
+# Data Validation & Models
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# Async PostgreSQL Driver
+asyncpg==0.29.4
+
+# Logging & Utilities
+structlog==24.4.0
+
+# Optional: For better JSON handling with datetime
+orjson==3.10.7
