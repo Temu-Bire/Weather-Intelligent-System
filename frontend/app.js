@@ -1,5 +1,5 @@
 // frontend/app.js
-const API_BASE = 'http://127.0.0.1:8000';   // More reliable than localhost
+const API_BASE = '';  // More reliable than localhost
 
 async function getWeather() {
     const cityInput = document.getElementById('cityInput');

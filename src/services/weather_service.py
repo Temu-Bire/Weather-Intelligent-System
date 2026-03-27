@@ -1,7 +1,6 @@
 # src/services/weather_service.py
 import asyncio
 import logging
-from typing import Optional
 from datetime import datetime
 
 from ..clients.weather_client import WeatherClient

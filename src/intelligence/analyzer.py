@@ -1,7 +1,7 @@
 # src/intelligence/analyzer.py
 
 from datetime import datetime
-from typing import List, Optional
+from typing import List
 
 from ..config import settings
 from ..models.weather_model import (

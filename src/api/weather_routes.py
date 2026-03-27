@@ -1,7 +1,6 @@
 # src/api/weather_routes.py
 
 from aiohttp import web
-from typing import Dict
 
 from ..services.weather_service import weather_service
 from ..models.weather_model import WeatherIntelligence

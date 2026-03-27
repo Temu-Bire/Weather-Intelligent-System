@@ -2,7 +2,7 @@
 
 import os
 from dotenv import load_dotenv
-from pathlib import Path
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -18,7 +18,7 @@ class Settings:
     PORT: int = int(os.getenv("PORT", 8000))
 
     # ==================== Weather API Settings ====================
-    OPENWEATHER_API_KEY: str = os.getenv("OPENWEATHER_API_KEY")
+    OPENWEATHER_API_KEY: str = os.getenv("OPENWEATHER_API_KEY") # type: ignore
     OPENWEATHER_BASE_URL: str = "https://api.openweathermap.org/data/2.5"
     OPENWEATHER_GEO_URL: str = "https://api.openweathermap.org/geo/1.0"
 
@@ -27,7 +27,7 @@ class Settings:
     DB_PORT: int = int(os.getenv("DB_PORT", 5432))
     DB_NAME: str = os.getenv("DB_NAME", "weather_intelligent")
     DB_USER: str = os.getenv("DB_USER", "postgres")
-    DB_PASSWORD: str = os.getenv("DB_PASSWORD")
+    DB_PASSWORD: str = os.getenv("DB_PASSWORD", "")
 
     # Async PostgreSQL Database URL
     DATABASE_URL: str = (

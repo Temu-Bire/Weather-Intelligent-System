@@ -1,6 +1,4 @@
 # src/db/database.py
-
-import asyncio
 import logging
 from typing import Optional
 
