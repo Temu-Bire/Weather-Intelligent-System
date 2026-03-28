@@ -22,7 +22,6 @@ def create_app():
 # Serve frontend static files
     frontend_path = os.path.join(os.path.dirname(__file__), '..', 'frontend')
     app.router.add_static('/static/', path=frontend_path, name='static')
-
     # Main page
     async def index_handler(request):
         return web.FileResponse(os.path.join(frontend_path, 'index.html'))

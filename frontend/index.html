@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Intelligent</title>
-    <link rel="stylesheet" href="/static/style.css"></head>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
 <body>
     <div class="container">
         <header>
@@ -20,6 +21,7 @@
         <div id="loading" class="loading">Loading weather data...</div>
 
         <div id="weatherContainer" class="weather-container hidden">
+            
             <!-- Current Weather -->
             <div class="current-weather">
                 <h2 id="locationName"></h2>
@@ -62,11 +64,24 @@
                     <strong id="uvIndex"></strong>
                 </div>
             </div>
+
+            <!-- Hourly Forecast -->
+            <div class="forecast-section">
+                <h3>⏰ Next 12 Hours</h3>
+                <div id="hourlyForecast" class="forecast-grid"></div>
+            </div>
+
+            <!-- Daily Forecast -->
+            <div class="forecast-section">
+                <h3>📅 7-Day Forecast</h3>
+                <div id="dailyForecast" class="forecast-grid"></div>
+            </div>
+
         </div>
 
         <div id="error" class="error hidden"></div>
     </div>
 
-    <script src="static/app.js"></script>
+    <script src="/static/app.js"></script>
 </body>
 </html>

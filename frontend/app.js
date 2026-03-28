@@ -1,5 +1,6 @@
-// frontend/app.js
-const API_BASE = '';  // More reliable than localhost
+// frontend/app.js - Fixed Version
+
+const API_BASE = '';
 
 async function getWeather() {
     const cityInput = document.getElementById('cityInput');
@@ -24,7 +25,7 @@ async function getWeather() {
 
     } catch (error) {
         console.error(error);
-        showError(`Could not connect to server. Make sure the backend is running on port 8000.`);
+        showError("Could not connect to server. Make sure backend is running on port 8000.");
     } finally {
         showLoading(false);
     }
@@ -71,6 +72,58 @@ function displayWeather(data) {
     } else {
         alertsSection.classList.add('hidden');
     }
+
+    // Render Forecasts - This was causing the error
+    renderHourlyForecast(data.hourly_forecast);
+    renderDailyForecast(data.daily_forecast);
+}
+
+// Hourly Forecast
+function renderHourlyForecast(forecast) {
+    const container = document.getElementById('hourlyForecast');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!forecast || !forecast.data_points || forecast.data_points.length === 0) {
+        container.innerHTML = '<p style="color:#888; text-align:center; grid-column:1/-1;">No hourly forecast available</p>';
+        return;
+    }
+
+    forecast.data_points.slice(0, 12).forEach(point => {
+        const time = new Date(point.timestamp).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+        const card = document.createElement('div');
+        card.className = 'forecast-card';
+        card.innerHTML = `
+            <div class="forecast-time">${time}</div>
+            <div class="forecast-temp">${Math.round(point.temperature_c)}°C</div>
+            <div class="forecast-condition">${point.condition.replace('_', ' ')}</div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Daily Forecast
+function renderDailyForecast(forecast) {
+    const container = document.getElementById('dailyForecast');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!forecast || !forecast.data_points || forecast.data_points.length === 0) {
+        container.innerHTML = '<p style="color:#888; text-align:center; grid-column:1/-1;">No daily forecast available</p>';
+        return;
+    }
+
+    forecast.data_points.forEach(point => {
+        const date = new Date(point.timestamp).toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
+        const card = document.createElement('div');
+        card.className = 'forecast-card';
+        card.innerHTML = `
+            <div class="forecast-time">${date}</div>
+            <div class="forecast-temp">${Math.round(point.temperature_c)}°C</div>
+            <div class="forecast-condition">${point.condition.replace('_', ' ')}</div>
+        `;
+        container.appendChild(card);
+    });
 }
 
 function showError(message) {
@@ -85,14 +138,10 @@ function showLoading(isLoading) {
     document.getElementById('weatherContainer').classList.toggle('hidden', isLoading);
 }
 
-// Allow pressing Enter in input field
+// Enter key support
 document.getElementById('cityInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        getWeather();
-    }
+    if (e.key === 'Enter') getWeather();
 });
 
-// Load default weather on page load
-window.onload = () => {
-    getWeather();
-};
+// Load on start
+window.onload = () => getWeather();

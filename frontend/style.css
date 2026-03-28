@@ -180,3 +180,52 @@ header p {
     text-align: center;
     margin-top: 20px;
 }
+/* =============== INTERACTIVE FORECAST STYLES =============== */
+.forecast-section {
+    margin: 35px 0 20px 0;
+}
+
+.forecast-section h3 {
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+    gap: 14px;
+}
+
+.forecast-card {
+    background: #f8f9fa;
+    border-radius: 14px;
+    padding: 16px 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.forecast-card:hover {
+    transform: translateY(-6px);
+    background: #e8f5e9;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.forecast-time {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.forecast-temp {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 6px 0;
+}
+
+.forecast-condition {
+    font-size: 0.85rem;
+    color: #555;
+    text-transform: capitalize;
+}
