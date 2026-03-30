@@ -201,8 +201,10 @@ class WeatherClient:
 
 # Usage example (for testing)
 async def main():
+    city = input("Enter city name: ")  # User provides the city dynamically
+
     async with WeatherClient() as client:
-        intelligence = await client.get_weather_intelligence("Addis Ababa")
+        intelligence = await client.get_weather_intelligence(city)
         print(json.dumps(intelligence.model_dump(), indent=2, default=str))
 
 
